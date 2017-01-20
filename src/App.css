@@ -1,7 +1,7 @@
 :root {
-  --thumbnail-gutter-background: rgba(200, 225, 200, 1);
-  --thumbnail-target-background: rgba(67, 82, 57, 1);
-  --thumbnail-target-border: rgba(52, 240, 48, 1);
+  --clip-gutter-background: rgba(200, 225, 200, 1);
+  --clip-target-background: rgba(67, 82, 57, 1);
+  --clip-target-border: rgba(52, 240, 48, 1);
 }
 
 .container {
@@ -11,10 +11,10 @@
   flex-flow: row wrap;
 }
 
-.thumbnail-gutter { }
+.clip-gutter { }
 
-.thumbnail-container {
-  background: var(--thumbnail-gutter-background);
+.clip-container {
+  background: var(--clip-gutter-background);
   height: 65px;
   width: 95px;
   margin: 8px;
@@ -24,16 +24,16 @@
   flex: 1 0%;
 }
 
-.thumbnail-targets {
+.clip-targets {
   flex: 1 100%;
   display: flex;
 }
 
-.thumbnail-target-container {
-  background: var(--thumbnail-target-background);
-  height: 75px;
-  width: 75px;
-  border: 2px solid var(--thumbnail-target-border);
+.clip-target-container {
+  background: var(--clip-target-background);
+  height: 65px;
+  width: 95px;
+  border: 2px solid var(--clip-target-border);
   margin: 20px;
 }
 
