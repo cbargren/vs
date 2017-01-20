@@ -14,7 +14,7 @@ export default class Container extends Component {
     const videoAttributes = allClipsAreCorrect ? { autoPlay: true, controls: true } : {};
 
     return (
-      <div className='video'>
+      <div className='video z-depth-1'>
         <Overlay isShown={!allClipsAreCorrect} />
         <video {...videoAttributes} src={require('../assets/bev_Fizzio_Lemon_Ale_MG_360_v01.mp4')}></video>
       </div>

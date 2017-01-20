@@ -20,7 +20,7 @@ export default class ClipGutter extends Component {
       return <ClipContainer id={id} clipOrdered={!!orderedLocation} />
     });
     return (
-      <div className='clip-gutter'>
+      <div className='clip-gutter z-depth-1'>
         <Overlay isShown={allClipsAreCorrect} />
         {clipContainers}
       </div>

@@ -17,7 +17,7 @@ export default class ClipTargets extends Component {
       .map(id => <ClipTargetContainer clipId={_.findKey(clipsById, ['orderedLocation', `${id}`])} showScore={allClipsOrdered} id={`${id}`} />)
       .value();
     return (
-      <div className='clip-targets'>
+      <div className='clip-targets z-depth-1'>
         <Overlay isShown={allClipsAreCorrect} />
         {clipTargets}
       </div>

@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 
@@ -51,7 +52,6 @@ class Clip extends Component {
   render() {
     const {
       connectDragSource,
-      isDragging,
       id
     } = this.props;
     const {
@@ -59,12 +59,17 @@ class Clip extends Component {
     } = this.state;
     const imgName = `lemon_step_${id}_master`;
     const fileFormat = isHovered ? FILE_FORMATS.GIF : FILE_FORMATS.JPG;
+    const classes = classnames(
+      'clip',
+      isHovered ? 'z-depth-3' : 'z-depth-1'
+    );
     return connectDragSource(
-      <div className='clip'>
-        <img
-          onMouseEnter={this.onMouseEnter}
-          onMouseLeave={this.onMouseLeave}
-          src={require(`../assets/${imgName}.${fileFormat}`)} />
+      <div
+        className={classes}
+        onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}
+      >
+        <img src={require(`../assets/${imgName}.${fileFormat}`)} />
       </div>
     );
   };

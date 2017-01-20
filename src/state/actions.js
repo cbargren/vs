@@ -5,7 +5,7 @@ export const CLIP_MOVED = 'CLIP_MOVED';
 export const CLIP_UNORDERED = 'CLIP_UNORDERED';
 export const STATUS_REPORTED = 'STATUS_REPORTED';
 
-const clipCount = 2;
+const clipCount = 7;
 
 export const ClipsInit = () => {
   const clipIds = _.range(1, clipCount + 1);
@@ -13,7 +13,7 @@ export const ClipsInit = () => {
   return {
     type: CLIPS_INIT,
     clipsById: _(clipIds).mapKeys(id => id).mapValues(id => ({
-      disorderedLocation: shuffledOrder[id],
+      disorderedLocation: shuffledOrder[id - 1],
       orderedLocation: null
     })).value()
   };

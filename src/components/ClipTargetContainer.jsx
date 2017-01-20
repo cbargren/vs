@@ -32,8 +32,10 @@ class ClipTargetContainer extends Component {
     const classes = classnames(
       'clip-target-container',
       {
-        correct: showScore && isCorrect,
-        incorrect: showScore && !isCorrect
+        'z-depth-3': isOver,
+        'is-over': isOver,
+        'correct': showScore && isCorrect,
+        'incorrect': showScore && !isCorrect
       }
     )
 
