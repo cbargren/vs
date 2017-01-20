@@ -1,12 +1,16 @@
 :root {
+  --transparent: rgba(0,0,0,0);
   --clip-gutter-background: rgba(200, 225, 200, 1);
   --clip-target-background: rgba(67, 82, 57, 1);
-  --clip-target-border: rgba(52, 240, 48, 1);
+  --clip-target-border-correct: rgba(52, 240, 48, 1);
+  --clip-target-border-incorrect: rgba(169, 68, 66, 1);
+  --video-background: rgba(44, 50, 50, 1);
+  --video-overlay: rgba(40, 40, 40, .5);
 }
 
 .container {
   display: flex;
-  max-width: 800px;
+  max-width: 1000px;
   margin: auto;
   flex-flow: row wrap;
 }
@@ -21,7 +25,25 @@
 }
 
 .video {
+  margin: 30px;
   flex: 1 0%;
+  display: flex;
+  background: var(--video-background);
+  position: relative;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: var(--video-overlay);
+}
+
+.video video {
+  margin: auto;
 }
 
 .clip-targets {
@@ -33,8 +55,16 @@
   background: var(--clip-target-background);
   height: 65px;
   width: 95px;
-  border: 2px solid var(--clip-target-border);
+  border: 2px solid var(--transparent);
   margin: 20px;
+}
+
+.clip-target-container.correct {
+  border-color: var(--clip-target-border-correct);
+}
+
+.clip-target-container.incorrect {
+  border-color: var(--clip-target-border-incorrect);
 }
 
 .clip {
@@ -47,4 +77,8 @@
 .clip > img {
   max-width: 90%;
   margin: auto;
+}
+
+.hidden {
+  display: none;
 }

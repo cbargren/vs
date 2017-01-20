@@ -4,7 +4,8 @@ import { createStore } from 'redux';
 import {
   CLIPS_INIT,
   CLIP_MOVED,
-  CLIP_UNORDERED
+  CLIP_UNORDERED,
+  STATUS_REPORTED
 } from './actions';
 
 const initState = () => ({
@@ -13,7 +14,8 @@ const initState = () => ({
       disorderedLocation: 1,
       orderedLocation: null
     }
-  }
+  },
+  statusReported: false
 });
 
 const reducer = (state, message) => {
@@ -66,6 +68,15 @@ const reducer = (state, message) => {
             orderedLocation: null
           }
         }
+      };
+    }
+    case STATUS_REPORTED: {
+      const {
+        statusReported
+      } = message;
+      return {
+        ...state,
+        statusReported
       };
     }
     default: {

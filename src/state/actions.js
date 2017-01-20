@@ -3,8 +3,9 @@ import _ from 'lodash';
 export const CLIPS_INIT = 'CLIPS_INIT';
 export const CLIP_MOVED = 'CLIP_MOVED';
 export const CLIP_UNORDERED = 'CLIP_UNORDERED';
+export const STATUS_REPORTED = 'STATUS_REPORTED';
 
-const clipCount = 7;
+const clipCount = 2;
 
 export const ClipsInit = () => {
   const clipIds = _.range(1, clipCount + 1);
@@ -27,4 +28,9 @@ export const ClipMoved = (id, movedTo) => ({
 export const ClipUnordered = (id) => ({
   type: CLIP_UNORDERED,
   id
+});
+
+export const StatusReported = (statusReported) => ({
+  type: STATUS_REPORTED,
+  statusReported
 });

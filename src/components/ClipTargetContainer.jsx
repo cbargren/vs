@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
 
@@ -24,11 +25,20 @@ class ClipTargetContainer extends Component {
       clipId,
       id,
       connectDropTarget,
-      isOver
+      isOver,
+      showScore
     } = this.props;
+    const isCorrect = id === clipId;
+    const classes = classnames(
+      'clip-target-container',
+      {
+        correct: showScore && isCorrect,
+        incorrect: showScore && !isCorrect
+      }
+    )
 
     return connectDropTarget(
-      <div className='clip-target-container'>
+      <div className={classes}>
         {
           clipId ?
             <Clip id={clipId}></Clip> :

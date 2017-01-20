@@ -36,10 +36,6 @@ function collect(connect, monitor) {
 class Clip extends Component {
   state = { isHovered: false };
 
-  moveClip = () => {
-    store.dispatch(ClipMoved(this.props.id, "1"));
-  }
-
   onMouseEnter = () => {
     this.setState({
       isHovered: true
@@ -66,7 +62,6 @@ class Clip extends Component {
     return connectDragSource(
       <div className='clip'>
         <img
-          onClick={this.moveClip}
           onMouseEnter={this.onMouseEnter}
           onMouseLeave={this.onMouseLeave}
           src={require(`../assets/${imgName}.${fileFormat}`)} />
