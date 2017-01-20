@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { DragSource } from 'react-dnd';
 
 import store from '../state/store';
 import {
@@ -10,7 +11,29 @@ const FILE_FORMATS = {
   JPG: 'jpg'
 }
 
-export default class Clip extends Component {
+const clipSource = {
+  beginDrag(props) {
+    return {
+      id: props.id
+    };
+  },
+  endDrag(props, monitor) {
+    const dropTarget = monitor.getDropResult();
+    if (!dropTarget) {
+      return;
+    }
+    store.dispatch(ClipMoved(props.id, dropTarget.id));
+  }
+};
+
+function collect(connect, monitor) {
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  }
+}
+
+class Clip extends Component {
   state = { isHovered: false };
 
   moveClip = () => {
@@ -31,6 +54,8 @@ export default class Clip extends Component {
 
   render() {
     const {
+      connectDragSource,
+      isDragging,
       id
     } = this.props;
     const {
@@ -38,7 +63,7 @@ export default class Clip extends Component {
     } = this.state;
     const imgName = `lemon_step_${id}_master`;
     const fileFormat = isHovered ? FILE_FORMATS.GIF : FILE_FORMATS.JPG;
-    return (
+    return connectDragSource(
       <div className='clip'>
         <img
           onClick={this.moveClip}
@@ -47,5 +72,7 @@ export default class Clip extends Component {
           src={require(`../assets/${imgName}.${fileFormat}`)} />
       </div>
     );
-  }
+  };
 }
+
+export default DragSource('Clip', clipSource, collect)(Clip);

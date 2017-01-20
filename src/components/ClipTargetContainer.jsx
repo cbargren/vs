@@ -1,15 +1,33 @@
-
 import React, { Component } from 'react';
+import { DropTarget } from 'react-dnd';
 
 import Clip from './Clip';
 
-export default class ClipTargetContainer extends Component {
+const clipDropTarget = {
+  drop(props) {
+    return {
+      id: props.id
+    };
+  }
+};
+
+function collect(connect, monitor) {
+  return {
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver()
+  };
+}
+
+class ClipTargetContainer extends Component {
   render() {
     const {
       clipId,
-      id
+      id,
+      connectDropTarget,
+      isOver
     } = this.props;
-    return (
+
+    return connectDropTarget(
       <div className='clip-target-container'>
         {
           clipId ?
@@ -20,3 +38,5 @@ export default class ClipTargetContainer extends Component {
     );
   }
 }
+
+export default DropTarget('Clip', clipDropTarget, collect)(ClipTargetContainer);

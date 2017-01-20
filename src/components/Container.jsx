@@ -1,10 +1,12 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 import ClipGutter from './ClipGutter';
 import ClipTargets from './ClipTargets';
 
-export default class Container extends Component {
+class Container extends Component {
   render () {
     return (
       <div className='container'>
@@ -19,3 +21,5 @@ export default class Container extends Component {
     );
   }
 }
+
+export default DragDropContext(HTML5Backend)(Container);
