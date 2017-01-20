@@ -76,6 +76,7 @@
   width: var(--clip-width);
   border: var(--clip-target-border-width) solid var(--transparent);
   margin: 15px;
+  background-clip: padding-box;
 }
 
 .clip-target-container.is-over {
